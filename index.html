@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oferta Exclusiva - Tempo Limitado!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      background: #fff;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #e63946;
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .cta-button {
+      background-color: #2a9d8f;
+      color: white;
+      padding: 15px 30px;
+      font-size: 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 25px 0;
+      transition: background 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    .cta-button:hover {
+      background-color: #21867a;
+    }
+
+    .countdown {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d90429;
+      margin: 20px 0;
+    }
+
+    .testimonials {
+      text-align: left;
+      margin-top: 40px;
+    }
+
+    .testimonial {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .testimonial strong {
+      color: #2b2d42;
+    }
+
+    .footer-note {
+      font-size: 14px;
+      color: #888;
+      margin-top: 40px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>⚠️ Atenção: Vagas Limitadas Para Esta Oferta Especial</h1>
+    <p>Você foi selecionado para aproveitar uma promoção exclusiva. Mas corra, a oportunidade está acabando!</p>
+
+    <div class="countdown" id="countdown-timer">
+      Tempo restante: 05:00
+    </div>
+
+    <a class="cta-button" href="https://metiocalitax.com/click.php?key=1bd091pc628d55to3fhf&SUBID=d0m8ioqvkg3uge1fjrsg&zoneid=2064973&campaignid=3320022&cohort=&type=TBN&site_id=8478&placement_id=58821751" target="_blank">
+      Acessar Agora com Desconto
+    </a>
+
+    <div class="testimonials">
+      <h2>O que estão dizendo:</h2>
+      <div class="testimonial">
+        <p>“Achei que fosse golpe, mas resolvi tentar... e me surpreendi! Em poucos dias já vi resultados. Obrigada!”<br><strong>- Larissa M., SP</strong></p>
+      </div>
+      <div class="testimonial">
+        <p>“Nunca vi algo assim funcionar tão bem. Valeu cada centavo. Super recomendo!”<br><strong>- Pedro S., MG</strong></p>
+      </div>
+      <div class="testimonial">
+        <p>“Simples, rápido e eficaz. O atendimento também foi excelente!”<br><strong>- Juliana F., RJ</strong></p>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      *Oferta válida por tempo limitado ou enquanto durarem os estoques. Resultados podem variar.
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdmin = urlParams.get('admin') === '1';
+    if (isAdmin) {
+      alert("🔔 Admin: Um usuário acabou de acessar o site.");
+      console.log("Admin log: acesso detectado às", new Date().toLocaleString());
+    }
+
+    const countdownEl = document.getElementById('countdown-timer');
+    const countdownDuration = 5 * 60 * 1000;
+
+    if (!localStorage.getItem("countdownStart")) {
+      localStorage.setItem("countdownStart", Date.now());
+    }
+
+    const countdownStart = parseInt(localStorage.getItem("countdownStart"));
+
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const timeLeft = countdownDuration - (now - countdownStart);
+
+      if (timeLeft <= 0) {
+        countdownEl.textContent = "A oferta expirou! Tente novamente.";
+        clearInterval(interval);
+      } else {
+        const minutes = String(Math.floor(timeLeft / 60000)).padStart(2, '0');
+        const seconds = String(Math.floor((timeLeft % 60000) / 1000)).padStart(2, '0');
+        countdownEl.textContent = `Tempo restante: ${minutes}:${seconds}`;
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
